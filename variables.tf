@@ -19,7 +19,7 @@ variable "proxmox_password" {
 variable "vm_name" {
   description = "Name of the VM."
   type        = string
-  default     = "build01"
+  default     = "docker01"
 }
 
 variable "proxmox_node" {
@@ -47,19 +47,19 @@ variable "template_name" {
 }
 
 variable "vm_cores" {
-  description = "vCPU cores for build01 (CI controller workload)."
+  description = "vCPU cores for docker01 (Docker host for CI workloads)."
   type        = number
   default     = 4
 }
 
 variable "vm_memory" {
-  description = "Memory (MiB) for build01 (CI controller workload)."
+  description = "Memory (MiB) for docker01 (Docker host for CI workloads)."
   type        = number
   default     = 8192
 }
 
 variable "disk_size" {
-  description = "Disk size (GiB) for build01."
+  description = "Disk size (GiB) for docker01."
   type        = number
   default     = 40
 }
@@ -91,13 +91,13 @@ variable "ipv4_gateway" {
 variable "search_domain" {
   description = "DNS search domain applied to the VM via cloud-init."
   type        = string
-  default     = "vernify.internal"
+  default     = "vernify.com"
 }
 
 variable "tags" {
   description = "Tags to apply to the VM."
   type        = list(string)
-  default     = ["phase-4", "ci", "build01"]
+  default     = ["vernify", "ci", "docker"]
 }
 
 variable "ci_password" {
