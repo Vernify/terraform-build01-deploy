@@ -1,7 +1,7 @@
-# Vernify — build01 CI core host.
+# Vernify — docker01 CI infrastructure host.
 #
-# Provisions the build01 Ubuntu 24.04 VM for HashiCorp Jenkins CI controller.
-# Runs IN the `build01` TFC workspace (created by terraform-workspaces-deploy).
+# Provisions the docker01 Ubuntu 24.04 VM for Docker host running CI workloads.
+# Runs IN the `docker01` TFC workspace (created by terraform-workspaces-deploy).
 # Consumes the org-neutral terraform-proxmox-vm module; this repo holds only
 # Vernify's concrete values.
 
@@ -19,7 +19,7 @@ terraform {
   # cloud {
   #   organization = "Vernify"
   #   workspaces {
-  #     name = "build01"
+  #     name = "docker01"
   #   }
   # }
 }
@@ -32,7 +32,7 @@ provider "proxmox" {
   pm_tls_insecure = true
 }
 
-module "build01" {
+module "docker01" {
   # Testing: local path (both repos in same workspace).
   # Once validated, commit feat branches and tag v0.1.0 on GitHub, then switch to:
   #   source = "git::https://github.com/iac-foundry/terraform-proxmox-vm.git?ref=v0.1.0"
