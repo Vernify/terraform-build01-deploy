@@ -1,12 +1,12 @@
-# terraform-build01-deploy
+# terraform-docker01-deploy
 
-Terraform configuration for provisioning the build01 CI core host on Proxmox.
+Terraform configuration for provisioning the docker01 CI infrastructure host on Proxmox.
 
 ## Overview
 
-build01 is a 4 vCPU / 8 GB RAM Ubuntu 24.04 VM that runs:
-- Jenkins controller (Docker container)
-- Job DSL pipeline definitions
+docker01 is a 4 vCPU / 8 GB RAM Ubuntu 24.04 VM that runs:
+- Docker daemon for build workloads
+- CI job containers
 - Vault AppRole integration
 
 This repository follows the [terraform-proxmox-vm](https://github.com/iac-foundry/terraform-proxmox-vm) module pattern for consistency with sec01 and agent01 deployments.
@@ -14,11 +14,11 @@ This repository follows the [terraform-proxmox-vm](https://github.com/iac-foundr
 ## Architecture
 
 ```
-terraform-build01-deploy/
+terraform-docker01-deploy/
 ├── main.tf           # Proxmox provider + terraform-proxmox-vm module invocation
 ├── variables.tf      # Input variables (Proxmox credentials, VM specs, network settings)
-├── outputs.tf        # Outputs (build01 VM ID, IP address)
-├── build01.auto.tfvars  # Default values (committed; can be overridden)
+├── outputs.tf        # Outputs (docker01 VM ID, IP address)
+├── docker01.auto.tfvars  # Default values (committed; can be overridden)
 ├── .gitignore        # Exclude *.tfvars (sensitive), .terraform/, etc.
 └── README.md         # This file
 ```
@@ -44,7 +44,7 @@ terraform plan \
   -var proxmox_password='<proxmox-password>' \
   -var 'ssh_public_keys=["ssh-rsa AAAA... user@host"]'
 
-# Apply (provision build01 on Proxmox)
+# Apply (provision docker01 on Proxmox)
 terraform apply \
   -var proxmox_password='<proxmox-password>' \
   -var 'ssh_public_keys=["ssh-rsa AAAA... user@host"]'
@@ -54,7 +54,7 @@ terraform apply \
 
 1. Uncomment the `cloud` block in `main.tf`
 2. Authenticate: `terraform login`
-3. Create TFC workspace: `build01`
+3. Create TFC workspace: `docker01`
 4. Set variables in TFC:
    - `proxmox_password` (sensitive)
    - `ssh_public_keys` (list of strings)
