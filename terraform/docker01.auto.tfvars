@@ -8,7 +8,7 @@ disk_size         = 40
 proxmox_datastore = "pve-08-zfs"
 network_bridge    = "vmbr0"
 template_name     = "ubuntu-24.04-template"
-ci_user           = "ubuntu"
+ci_user           = "werner"
 
 # SSH access
 ssh_public_keys = [
