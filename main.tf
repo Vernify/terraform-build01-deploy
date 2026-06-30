@@ -55,8 +55,4 @@ module "docker01" {
   tags          = var.tags
   ci_password   = var.ci_password
 
-  # See terraform-sec01-deploy/main.tf for why: this Proxmox host's roles
-  # don't grant the agent-read privilege the provider needs for a NEW
-  # resource's plan/apply. Scoped to this consumer only.
-  agent_enabled = false
 }

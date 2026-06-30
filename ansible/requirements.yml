@@ -1,0 +1,24 @@
+---
+# Ansible collection requirements for terraform-build01-deploy/ansible/site.yml
+# Run: ansible-galaxy collection install -r requirements.yml --force
+collections:
+  - name: blueprints.step_ca
+    source: https://github.com/iac-foundry/ansible-collection-step-ca
+    type: git
+    version: 4d0415f4cf143a1b521f7eb280d5d3ed22c4998c  # feat/phase-3-5-bootstrap
+
+  - name: blueprints.jenkins
+    source: https://github.com/iac-foundry/ansible-collection-jenkins
+    type: git
+    version: a089147b90f443621dc00caf8d638488c1dd01dc  # feat/phase-3-5-bootstrap
+
+  - name: blueprints.jenkins_integrations
+    source: https://github.com/iac-foundry/ansible-collection-jenkins-integrations
+    type: git
+    version: c0ad39c89a6c93321466db0481b97ef3ee7f9bab  # feat/phase-3-5-bootstrap
+
+  - name: community.docker
+    version: ">=3.10.0,<4.0.0"
+
+  - name: community.general
+    version: ">=3.0.0,<4.0.0"
