@@ -22,3 +22,13 @@ collections:
 
   - name: community.general
     version: ">=3.0.0,<4.0.0"
+
+  - name: blueprints.common
+    source: https://github.com/iac-foundry/ansible-collection-common
+    type: git
+    version: ea53a49627a704bc249c711f292e410a88ce625a  # origin/main
+
+  - name: vernify.common
+    source: https://github.com/vernify/ansible-collection-common
+    type: git
+    version: 1737345c369afdfaa43b73aabfd3b5b1a0849930  # origin/main
