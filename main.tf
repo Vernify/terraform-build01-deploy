@@ -32,9 +32,6 @@ provider "proxmox" {
 }
 
 module "docker01" {
-  # Testing: local path (both repos in same workspace).
-  # Once validated, commit feat branches and tag v0.1.0 on GitHub, then switch to:
-  #   source = "git::https://github.com/iac-foundry/terraform-proxmox-vm.git?ref=v0.1.0"
   source = "../../iac-foundry/terraform-proxmox-vm"
 
   vm_name         = var.vm_name
@@ -53,6 +50,4 @@ module "docker01" {
   }
   search_domain = var.search_domain
   tags          = var.tags
-  ci_password   = var.ci_password
-
 }
